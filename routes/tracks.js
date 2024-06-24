@@ -5,9 +5,15 @@ const trackCtrl = require("../controllers/tracks");
 ///////////////////////////
 // get tracks
 ///////////////////////////
+
 router.get("/", trackCtrl.index);
-router.get("/new", trackCtrl.create);
-router.get("/delete", trackCtrl.remove);
-router.get("/update", trackCtrl.update);
+
+router.post("/", trackCtrl.create);
+
+router.get("/:trackId", trackCtrl.show);
+
+router.put("/:trackId", trackCtrl.update);
+
+router.delete("/:trackId", trackCtrl.remove);
 
 module.exports = router;
