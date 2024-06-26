@@ -21,7 +21,7 @@ mongoose.connection.on("connected", () => {
 // Middleware
 ///////////////////////////
 // cors middleware
-app.use(cors());
+app.use(cors({ origin: "http://localhost:5173" }));
 // encoding
 app.use(express.urlencoded({ extended: false }));
 
@@ -34,24 +34,17 @@ app.use(morgan("dev"));
 // json parse middle ware
 app.use(express.json());
 
-
 ///////////////////////////
 // routers
 ///////////////////////////
-const tracksRouter = require('./routes/tracks')
-
+const tracksRouter = require("./routes/tracks");
 
 ///////////////////////////
 // routes
 ///////////////////////////
-app.use('/tracks', tracksRouter)
-
-
-
-
-
+app.use("/tracks", tracksRouter);
 
 // start server
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`)
-})
+  console.log(`Server is running on port ${port}`);
+});

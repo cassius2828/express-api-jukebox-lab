@@ -10,6 +10,8 @@ const index = async (req, res) => {
       res.status(400);
       throw new Error("Could not retrieve tracks");
     }
+    console.log('success!')
+    console.log(allTracks)
     res.status(200).json(allTracks);
   } catch (err) {
     if (res.statusCode === 404) {
