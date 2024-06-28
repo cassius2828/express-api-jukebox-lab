@@ -38,10 +38,14 @@ app.use(express.json());
 // routers
 ///////////////////////////
 const tracksRouter = require("./routes/tracks");
+const authRouter = require("./routes/auth");
+const verifyToken = require("./middleware/jwt");
 
 ///////////////////////////
 // routes
 ///////////////////////////
+app.use("/auth", authRouter);
+app.use(verifyToken);
 app.use("/tracks", tracksRouter);
 
 // start server
